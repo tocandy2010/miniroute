@@ -10,7 +10,7 @@ class Bootstrap {
         if (isset($_GET['url'])) {
             $url = $_GET['url'];
         } else {
-            $url = "index";
+            $url = "index/index";
         }
         
         $url = rtrim($url, '/');
@@ -33,6 +33,7 @@ class Bootstrap {
         $controllername = $url[0] . "Controller";
 
         $controller = new $controllername;
+        $controller->loadModel($url[0]);
 
         if (!method_exists($controller, $url[1])) {
             require("./controllers/Error.php");

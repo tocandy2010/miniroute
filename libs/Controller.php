@@ -10,4 +10,19 @@ class Controller {
     {
         $this->view = new View();
     }
+
+    function loadModel($name) 
+    {
+        $path = 'models/' . $name . 'Model.php';
+
+        if (file_exists($path)) {
+            require($path);
+            $modelname = $name.'Model';
+            $this->model = new $modelname;
+        } else {
+            require ('controllers/Error.php');
+            new Error("找不到模型&nbsp{{$name}}");
+            exit;
+        }
+    }
 }

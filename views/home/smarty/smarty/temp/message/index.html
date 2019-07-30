@@ -1,0 +1,88 @@
+{include file='\xampp\htdocs\MessageBook\back\public\header.html' title='留言版首頁'}
+<header>
+    <style>
+        #messagetable {
+            padding: 30px;
+            font-size: 20px;
+        }
+
+        #page {
+            height: 10%;
+            width: 30%;
+            position: relative;
+            top: -20%;
+            left: 0%;
+        }
+
+        #showtitle {
+            width: 90%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
+
+        td {
+            width: 33%;
+        }
+    </style>
+</header>
+    <div class="container-fluid text-center">
+        <div class="row content">
+            <div class="col-sm-2 sidenav">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <form action="./" method = 'get'>
+                            <p><input name="search" type="text" spellcheck ="false" 
+                                placeholder="依文章或姓名查詢" class="form-control input-md" value="{$search}"></p>
+                            <p><button id="searchbun" type="submit" class="btn btn-info btn-block">search</button></p>
+                        </form>               
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 text-left">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>標題</th>
+                            <th>發佈者</th>
+                            <th>發佈時間</th>
+                        </tr>
+                    </thead>
+                    <tbody id='buildindex'>
+                        {foreach from=$contentdata item=$coninfo}
+                        <tr>
+                            <td ><a href="../controller/content.php?conid={$coninfo['conid']}">
+                                <span id='showtitle'>{$coninfo['title']}</span></a></td>
+                            <td>{$coninfo['userName']}</td>
+                            <td>{$coninfo['createtime']}</td>
+                        </tr>
+                        {/foreach}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-2 sidenav">
+                <div class="well">
+                    <p>1.站內禁止任何交易行為</p>
+                    <p>2.禁止人身攻擊的文字</p>
+                </div>
+            </div>
+            <div class="container" id='page'>
+                <ul class="pagination">
+                    {foreach from=$showpage key=$k item=$v}
+                        {if $pagenum !== $v}
+                            <li><a href="../controller/index.php?page={$v}&search={$search}">{$v}</a></li>
+                        {else}
+                            <li class="active"><a href="../controller/index.php?page={$v}&search={$search}">{$v}</a></li>
+                        {/if}
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+{include file='\xampp\htdocs\MessageBook\back\public\header.html' title='我的文章'}
+<header>
+    <style>
+        #messagetable {
+            padding: 30px;
+            font-size: 20px;
+        }
+
+        #showtitle {
+            width: 90%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
+    </style>
+<header>
+    <div class="container-fluid text-center">
+            <div class="row content">
+                <div class="col-sm-2 sidenav"></div>
+                <div class="col-sm-8 text-left">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>主題</th>
+                                <th>發佈時間</th>
+                                <th>修改</th>
+                                <th>刪除</th>
+                            </tr>
+                        </thead>
+                        <tbody id='buildmyarticle'>
+                            {foreach from=$mycontent key=$k item=$v}
+                            <tr>
+                                <td style="width:50%"><a href="./content.php?conid={$v['conid']}"><span
+                                            id='showtitle'>{$v['title']}</span></a></td>
+                                <td>{$v['createtime']}</td>
+                                <td><a href="./myarticleedit.php?conid={$v['conid']}"><button type="button"
+                                            class="btn btn-success">編輯</button></a></td>
+                                <td><span class='delcontnet' data-title="{$v['title']}"
+                                        data-conid="{$v['conid']}"><button type="button"
+                                            class="btn btn-danger">刪除</button><span></span></td>
+                            </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm-2 sidenav"></div>
+            </div>
+        </div>
+    <script>
+
+        $(".delcontnet").click(function () {
+            let title = this.getAttribute('data-title');
+            let conid = this.getAttribute('data-conid');
+            let _this = this;
+            if (confirm('確認刪除文章[' + title + ']嗎?')) {
+                $.ajax({
+                    url: '../../back/controller/myarticledel.php?conid=' + conid,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.delsuccess) {
+                            $(_this).parent().parent().remove();
+                        } else if (result.nologin) {
+                            alert(result.nologin)
+                            $(window).attr('location', './login.php');
+                        } else if (result.erroruser) {
+                            alert(result.erroruser)
+                        } else {
+                            alert('刪除失敗')
+                        }
+                    }
+                });
+            }
+        })
+
+    </script>
+</body>
+
+</html>

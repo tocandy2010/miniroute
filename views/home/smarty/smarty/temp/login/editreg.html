@@ -1,0 +1,70 @@
+{include file='\xampp\htdocs\MessageBook\back\public\header.html' title='留言版登入'}
+<header>
+    <style>
+        #edit {
+            position: relative;
+            left: 30%;
+            bottom: 30%;
+            width: 40%;
+            height: 40%;
+            position: fixed;
+        }
+
+        #info {
+            position: absolute;
+            left: 0%;
+            border: 1px solid black;
+            width: 30%;
+            height: 30%;
+            text-align: center;
+            line-height: 100px;
+            font-size: 30px;
+            border-radius: 15px;
+            color: steelblue
+        }
+
+        .mouseover:hover {
+            background-color: orange;
+            box-shadow: 3px 3px 5px 6px #cccccc;
+            cursor: pointer;
+        }
+
+        #password {
+            border: 1px solid black;
+            position: absolute;
+            left: 50%;
+            width: 30%;
+            height: 30%;
+            text-align: center;
+            line-height: 100px;
+            font-size: 30px;
+            border-radius: 15px;
+            color: steelblue
+        }
+    </style>
+</head>
+    <div class="container-fluid text-center">
+        <div class="row content">
+            <div class="col-sm-2 sidenav">
+
+            </div>
+            <div class="col-sm-8 text-left">
+                <div id='edit'>
+                    <a href='./editinfo.php'>
+                        <div id='info' class='mouseover'>註冊資訊</div>
+                    </a>
+                    <a href='./editpassword.php'>
+                        <div id='password' class='mouseover'>修改密碼</div>
+                    </a>
+
+                </div>
+            </div>
+            <div class="col-sm-2 sidenav">
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

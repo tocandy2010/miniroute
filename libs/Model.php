@@ -1,8 +1,13 @@
 <?php
 
 class Model {
+
+    protected $table = null;
+    protected $pk = null;
+
     public function __construct()
     {
-        //連接資料庫
+        $this->db = new Database();
     }
+    
 }

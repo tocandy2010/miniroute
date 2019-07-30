@@ -21,6 +21,7 @@ class IndexController extends Controller{
     public function add()
     {
         echo "add";
+        var_dump($this->model);
         $this->view->render("home/index");
     }
 
