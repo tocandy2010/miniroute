@@ -1,23 +1,32 @@
 <?php
 
-class IndexController extends Controller{
+class IndexController extends Controller {
 
     public function __construct(){
         parent:: __construct();
     }
 
+    /*
+     *  首頁
+     */
     public function index($reg = false)
     {
-        $this->view->render("home/index");
-        require("models/HelpModel.php");
-        $model = new HelpModel();
+        $test = 'test';
+        $this->smarty->assign('test', URL);
+        $this->smarty->display('home/test.html');
     }
 
-    public function delete()
+    /*
+     *  新增頁面
+     */
+    public function create()
     {
-        echo "delete";
+
     }
 
+    /*
+     *  新增處理
+     */
     public function add()
     {
         echo "add";
@@ -25,8 +34,27 @@ class IndexController extends Controller{
         $this->view->render("home/index");
     }
 
+    /*
+     *  修改頁面
+     */
     public function edit()
     {
         echo "edit";
+    }
+
+    /*
+     *  修改處理
+     */
+    public function update()
+    {
+
+    }
+
+    /*
+     *  刪除處裡
+     */
+    public function delete()
+    {
+        echo "delete";
     }
 }

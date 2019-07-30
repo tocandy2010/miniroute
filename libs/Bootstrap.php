@@ -40,9 +40,10 @@ class Bootstrap {
             new errors("未定義的方法&nbsp{{$url[1]}}");
             exit;
         }
-
-        if (isset($url[2])) {
-            $controller->{$url[1]}($url[2]);
+        
+        $urlparameter = array_slice($url,2);
+        if (!empty($urlparameter)) {
+            $controller->{$url[1]}($urlparameter);
         } else if (isset($url[1])) {
             $controller->{$url[1]}();
         } else {

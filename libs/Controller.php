@@ -9,15 +9,19 @@ class Controller {
     function __construct()
     {
         $this->view = new View();
+        $this->smarty = new Mysmarty();
     }
 
-    function loadModel($name) 
+    /*
+     * 載入Model
+     */
+    function loadModel($name)
     {
         $path = 'models/' . $name . 'Model.php';
 
         if (file_exists($path)) {
             require($path);
-            $modelname = $name.'Model';
+            $modelname = $name .'Model';
             $this->model = new $modelname;
         } else {
             require ('controllers/Error.php');

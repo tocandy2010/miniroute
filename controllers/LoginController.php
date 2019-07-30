@@ -8,20 +8,7 @@ class LoginController extends Controller{
 
     public function index($reg = false)
     {
-        echo  $this->model->test();
-        $a = false;
-        if ($a === true) {
-            Session::init();
-            Session::set('login',true);
-            echo 789;
-            exit;
-        } else {
-            header("location: ./add");
-            exit;
-        }
-
         $this->view->render("home/login");
-        Session::destroy();
     }
 
     public function delete()
@@ -32,9 +19,13 @@ class LoginController extends Controller{
 
     public function add()
     {
-        echo "add";
-        var_dump($this->model);
-        $this->view->render("home/index");
+        $loginInfo['account'] = $_POST['account'];
+        $loginInfo['password'] = $_POST['password'];
+        if ($this->model->add($loginInfo) === 1) {
+            $this->view->render("home/index");
+        } else {
+            echo "error";
+        }
     }
 
     public function edit()

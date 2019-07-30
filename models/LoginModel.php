@@ -7,9 +7,8 @@ class LoginModel extends Model {
     //     parent::__construct();
     // }
 
-    public function test()
-    {
-        echo 123;
-    }
+    protected $table = "test";
+    protected $pk = "id";
+
 
 }
