@@ -1,6 +1,7 @@
 <?php
 
-class LoginModel extends Model {
+class LoginModel extends Model 
+{
 
     // public function __construct()
     // {
@@ -9,6 +10,5 @@ class LoginModel extends Model {
 
     protected $table = "test";
     protected $pk = "id";
-
 
 }

@@ -19,6 +19,9 @@ class LoginController extends Controller{
 
     public function add()
     {
+        echo file_get_contents("php://input"); 
+        echo 123;
+        exit;
         $loginInfo['account'] = $_POST['account'];
         $loginInfo['password'] = $_POST['password'];
         if ($this->model->add($loginInfo) === 1) {

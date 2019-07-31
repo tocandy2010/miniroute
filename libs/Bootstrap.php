@@ -1,6 +1,7 @@
 <?php
 
-class Bootstrap {
+class Bootstrap 
+{
 
     /*
      * 接收路由並且分發至 controller 下的方法

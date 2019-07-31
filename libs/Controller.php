@@ -1,7 +1,7 @@
 <?php
 
-class Controller {
-
+class Controller 
+{
     /*
      * 主控制器讓其他控制器繼承
      * 連接view

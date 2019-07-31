@@ -4,6 +4,7 @@ class Model {
 
     protected $table = null;
     protected $pk = null;
+    protected $filter = '';
 
     public function __construct()
     {
@@ -81,7 +82,7 @@ class Model {
     /*
      * 獲得主鍵獲得，參數1為主見職，參數2為接收方式(預設為關連陣列)
      */
-    public function auto_selectOne($pkvalue, $show = PDO::FETCH_ASSOC)
+    public function gettOne($pkvalue, $show = PDO::FETCH_ASSOC)
     {
         $sql = "select * from {$this->table} where {$this->pk} = ?";
         $res = $this->db->prepare($sql);

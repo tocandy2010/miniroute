@@ -1,6 +1,7 @@
 <?php
 
-class IndexController extends Controller {
+class IndexController extends Controller 
+{
 
     public function __construct(){
         parent:: __construct();
@@ -21,13 +22,13 @@ class IndexController extends Controller {
      */
     public function create()
     {
-
+        echo "create";
     }
 
     /*
      *  新增處理
      */
-    public function add()
+    public function add($id = false)
     {
         echo "add";
         var_dump($this->model);
@@ -45,7 +46,7 @@ class IndexController extends Controller {
     /*
      *  修改處理
      */
-    public function update()
+    public function update($id = false)
     {
 
     }
